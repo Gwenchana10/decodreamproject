@@ -1,0 +1,153 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D Interior Design Viewer</title>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: linear-gradient(135deg, #1e1e2f, #34354a);
+      color: white;
+      overflow: hidden;
+    }
+    canvas {
+      display: block;
+    }
+    .loading-screen {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.95);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 1000;
+    }
+    .loading-screen .spinner {
+      width: 60px;
+      height: 60px;
+      border: 6px solid rgba(255, 255, 255, 0.2);
+      border-top: 6px solid white;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+    }
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+  <div class="loading-screen" id="loadingScreen">
+    <div class="spinner"></div>
+  </div>
+
+  <script type="module">
+    import * as THREE from "https://unpkg.com/three@0.112/build/three.module.js";
+    import { OrbitControls } from "https://unpkg.com/three@0.112/examples/jsm/controls/OrbitControls.js";
+    import { OBJLoader } from "https://unpkg.com/three@0.112/examples/jsm/loaders/OBJLoader.js";
+    import { MTLLoader } from "https://unpkg.com/three@0.112/examples/jsm/loaders/MTLLoader.js";
+
+    // Scene, Camera, Renderer
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({ antialias: true });
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    renderer.setPixelRatio(window.devicePixelRatio);
+    renderer.shadowMap.enabled = true; // Enable shadows
+    document.body.appendChild(renderer.domElement);
+
+    // Lighting
+    const ambientLight = new THREE.AmbientLight(0x404040, 1.5); // Soft white light
+    scene.add(ambientLight);
+
+    const spotLight = new THREE.SpotLight(0xffffff, 1.5);
+    spotLight.position.set(10, 20, 10);
+    spotLight.castShadow = true;
+    scene.add(spotLight);
+
+    const directionalLight = new THREE.DirectionalLight(0xffffff, 0.8);
+    directionalLight.position.set(-10, 15, -10);
+    directionalLight.castShadow = true;
+    scene.add(directionalLight);
+
+    // Ground Plane with Shadow
+    const groundGeometry = new THREE.PlaneGeometry(100, 100);
+    const groundMaterial = new THREE.ShadowMaterial({ opacity: 0.5 });
+    const ground = new THREE.Mesh(groundGeometry, groundMaterial);
+    ground.rotation.x = -Math.PI / 2;
+    ground.position.y = -1;
+    ground.receiveShadow = true;
+    scene.add(ground);
+
+    // Grid Helper
+    const gridHelper = new THREE.GridHelper(50, 50, 0x888888, 0x444444);
+    scene.add(gridHelper);
+
+    // Controls
+    const controls = new OrbitControls(camera, renderer.domElement);
+    controls.enableDamping = true;
+    controls.dampingFactor = 0.1;
+    controls.enableZoom = true;
+    controls.maxDistance = 50;
+    controls.minDistance = 5;
+
+    // Loading Screen
+    const loadingScreen = document.getElementById("loadingScreen");
+
+    // Load MTL and OBJ
+    const mtlLoader = new MTLLoader();
+    mtlLoader.setPath("{% static 'models/' %}");
+    mtlLoader.load('interior.mtl', function (materials) {
+      materials.preload();
+      const objLoader = new OBJLoader();
+      objLoader.setMaterials(materials);
+      objLoader.setPath("{% static 'models/' %}");
+      objLoader.load('interior.obj', function (object) {
+        object.castShadow = true;
+        object.receiveShadow = true;
+        scene.add(object);
+
+        // Adjust object properties
+        object.scale.set(0.6, 0.6, 0.6); // Adjust scale
+        object.position.set(0, 0, 0); // Center the object
+        object.rotation.set(-Math.PI / 2, 0, 0); // Align properly
+
+        // Center camera based on the object's bounding box
+        const box = new THREE.Box3().setFromObject(object);
+        const size = box.getSize(new THREE.Vector3());
+        const center = box.getCenter(new THREE.Vector3());
+        const maxDim = Math.max(size.x, size.y, size.z);
+        const cameraDist = maxDim * 2;
+
+        camera.position.set(center.x, center.y + size.y, center.z + cameraDist);
+        camera.lookAt(center);
+
+        // Hide the loading screen
+        loadingScreen.style.display = 'none';
+      });
+    });
+
+    // Animation Loop
+    function animate() {
+      requestAnimationFrame(animate);
+      controls.update();
+      renderer.render(scene, camera);
+    }
+    animate();
+
+    // Handle Window Resize
+    window.addEventListener('resize', () => {
+      renderer.setSize(window.innerWidth, window.innerHeight);
+      camera.aspect = window.innerWidth / window.innerHeight;
+      camera.updateProjectionMatrix();
+    });
+  </script>
+
+</body>
+</html>

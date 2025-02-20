@@ -1,0 +1,277 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <!-- Mobile Specific Meta -->
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="{% static 'img/fav.png' %}">
+    <!-- Author Meta -->
+    <meta name="author" content="colorlib">
+    <!-- Meta Description -->
+    <meta name="description" content="">
+    <!-- Meta Keyword -->
+    <meta name="keywords" content="">
+    <!-- Meta Character Set -->
+    <meta charset="UTF-8">
+    <!-- Site Title -->
+    <title>Interior</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+    <!-- CSS -->
+    <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+<style>
+	#logo img {
+    width: 150px; /* Adjust as needed */
+    height: auto;
+}
+
+</style>
+</head>
+
+		<body>	
+			  <header id="header" id="home">
+		  		<div class="header-top">
+		  			<div class="container">
+				  		<div class="row">
+				  			<!--				  			<div class="col-lg-6 col-sm-6 col-4 header-top-left no-padding">
+				  				<a href="tel:+953 012 3654 896">+953 012 3654 896</a>
+				  				<a href="mailto:support@colorlib.com">support@colorlib.com</a>					  
+				  			</div>
+				  			<div class="col-lg-6 col-sm-6 col-8 header-top-right no-padding">
+				  				<ul>
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+									<li><a href="#"><i class="fa fa-behance"></i></a></li>
+				  				</ul>			
+				  			</div>-->
+				  		</div>			  					
+		  			</div>
+				</div>
+			    <div class="container main-menu">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <a href="{% url 'front_page' %}"><img src="{% static 'img/logo5.png' %}" alt="" title="" /></a>
+				      </div>
+				      <nav id="nav-menu-container">
+						<ul class="nav-menu">
+							<li class="menu-active"><a href="{% url 'front_page' %}">Home</a></li>
+							<li><a href="{% url 'promte_page' %}">Create Desgin From Promte</a></li>
+							<li><a href="{% url 'image_style_page' %}">Image Style Transfer</a></li>
+							<li><a href="{% url 'chatbot_page' %}">ChatBot</a></li>
+							<li><a href="http://localhost:8000/">Experience 3D</a></li>
+							<li><a href="{% url 'interior_nav' %}">Interior Walkthrough</a></li>
+							<li><a href="{% url 'user_designs' %}">History</a></li>
+
+							<li><a href="{% url 'logout' %}">Logout</a></li>
+						  </ul>
+				      </nav><!-- #nav-menu-container -->		    		
+			    	</div>
+			    </div>
+			  </header><!-- #header -->
+
+			<!-- start banner Area -->
+			<section class="banner-area relative" id="home">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row fullscreen d-flex justify-content-center align-items-center">
+						<div class="banner-content col-lg-9 col-md-12 justify-content-center ">
+							<h1>
+								Welcome To DecoDream			
+							</h1>
+							
+							<h4 class="text-white mx-auto">
+								Transforming Your Ideas into Stunning 3D Reality
+							</h4>
+							<!--<a href="#" class="primary-btn header-btn text-uppercase mt-10">Get Started</a>-->
+						</div>											
+					</div>
+				</div>
+			</section>
+			<!-- End banner Area -->
+			<!-- Start service Area -->
+			<section class="service-area section-gap" id="service">
+				<div class="container">
+					<div class="row justify-content-center">
+						<div class="col-md-12 pb-50 header-text text-center">
+							<h1 class="mb-10">What we offer to our clients</h1>
+							<p>
+								Who are in extremely love with eco friendly system..
+							</p>
+						</div>
+					</div>						
+					<div class="row">
+						<div class="col-lg-4">
+							<div class="single-service">
+								<a href="#"><h4> 3D Model Creation
+								</h4></a>
+								<p>
+									We convert your 2D plans into detailed, realistic 3D models to help you visualize your project with precision.
+								</p>
+							</div>
+						</div>	
+						<div class="col-lg-4">
+							<div class="single-service">
+								<a href="#"><h4>Easy Customization
+								</h4></a>
+								<p>
+									Customize layouts, materials, and interiors effortlessly with our user-friendly tools and chatbot support.
+								</p>
+							</div>
+						</div>	
+						<div class="col-lg-4">
+							<div class="single-service">
+								<a href="#"><h4>Complete Design Assistance
+								</h4></a>
+								<p>
+									From design to execution, we guide you every step of the way to create practical and beautiful spaces.
+								</p>
+							</div>
+						</div>																													
+					</div>
+				</div>	
+			</section>
+			<!-- End service Area -->
+
+			
+				
+			<!-- Start feature Area -->
+			<section class="feature-area section-gap">
+				<div class="container">
+					<div class="row d-flex justify-content-center">
+						<div class="col-md-12 pb-40 header-text text-center">
+							<h1 class="pb-10 text-white">Some Features that Made us Unique</h1>
+							<p class="text-white">
+								Who are in extremely love with eco friendly system.
+							</p>
+						</div>
+					</div>							
+					<div class="row">
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<a href="#" class="title d-flex flex-row align-items-center">
+									<span class="lnr lnr-user"></span>
+									<h4>Real Time Chatbot</h4>
+								</a>
+								<p>
+									Our chatbot helps you quickly customize your design, adjust layouts, and choose materials in real time, making the process easy and fast.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<a href="#" class="title d-flex flex-row align-items-center">
+									<span class="lnr lnr-license"></span>
+									<h4>Personalization</h4>
+								</a>
+								<p>
+									We offer tailored design options, allowing you to customize layouts, materials, and styles to fit your unique preferences and vision.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<a href="#" class="title d-flex flex-row align-items-center">
+									<span class="lnr lnr-phone"></span>
+									<h4>2D Floor Plan Input</h4>
+								</a>
+								<p>
+									Upload your 2D floor plans and get an accurate 3D model instantly, saving time and ensuring precision                                                                                                                                            
+									
+								</p>
+							</div>
+						<!--</div>						
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<a href="#" class="title d-flex flex-row align-items-center">
+									<span class="lnr lnr-rocket"></span>
+									<h4>Technical Skills</h4>
+								</a>
+								<p>
+									“The moment you think of buying a Web Hosting Plan, you know one thing – So many choices, which one to choose.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<a href="#" class="title d-flex flex-row align-items-center">
+									<span class="lnr lnr-diamond"></span>
+									<h4>Highly Recomended</h4>
+								</a>
+								<p>
+									Many conventional colleges and universities are now offering online DVD repair courses, which are the exact same.
+								</p>
+							</div>
+						</div>
+						<div class="col-lg-4 col-md-6">
+							<div class="single-feature">
+								<a href="#" class="title d-flex flex-row align-items-center">
+									<span class="lnr lnr-bubble"></span>
+									<h4>Positive Reviews</h4>
+								</a>
+								<p>
+									So you have your new digital camera and clicking away to glory anything and everything in sight. Now you want.
+								</p>
+							</div>
+						</div>	
+
+					</div>-->
+				</div>	
+			</section>
+			<!-- End feature Area -->		
+		
+		
+			
+<!-- start footer Area -->		
+<footer class="footer-area section-gap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5 col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<h6>About Us</h6>
+					<p>
+						At DecoDream, we specialize in converting your 2D floor plans into immersive, accurate 3D visualizations. Our unique approach combines cutting-edge technology with user-friendly chatbot customization, making the process of transforming your ideas into tangible designs seamless and interactive.
+					</p>
+					
+				</div>
+			</div>
+							
+			<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+				<div class="single-footer-widget">
+					<h6>Contact</h6>
+					<p>Email: decodream4202gmail.com</p>
+					<!--<div class="footer-social d-flex align-items-center">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-dribbble"></i></a>
+						<a href="#"><i class="fa fa-behance"></i></a>
+					</div>-->
+				</div>
+			</div>							
+		</div>
+	</div>
+</footer>	
+<!-- End footer Area -->	
+			<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>			
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+			<script src="{% static 'js/easing.min.js' %}"></script>			
+			<script src="{% static 'js/hoverIntent.js' %}"></script>
+			<script src="{% static 'js/superfish.min.js' %}"></script>	
+			<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+			<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>	
+			<script src="{% static 'js/owl.carousel.min.js' %}"></script>						
+			<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>							
+			<script src="{% static 'js/mail-script.js' %}"></script>	
+			<script src="{% static 'js/main.js' %}"></script>
+		</body>
+	</html>

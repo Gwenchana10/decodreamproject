@@ -1,0 +1,378 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="{% static 'img/fav.png' %}">
+  
+    <meta name="author" content="colorlib">
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta charset="UTF-8">
+
+    <title>Interior</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<style>
+		/* General Chat Container */
+.chat-container {
+    max-width: 800px;
+    margin: 50px auto;
+    background: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    padding: 10px;
+}
+
+/* Chat Header */
+.chat-header {
+    background-color: #c6b069;
+    padding: 20px;
+    text-align: center;
+    color: white;
+    font-size: 1.5rem;
+    border-radius: 10px 10px 0 0;
+}
+
+/* Chat Body */
+.chat-body {
+    height: 400px;
+    overflow-y: auto;
+    padding: 20px;
+    background: #fff;
+    border-radius: 0 0 10px 10px;
+}
+
+/* Message Styling */
+.message {
+    margin-bottom: 20px;
+    display: flex;
+    align-items: flex-start;
+}
+
+.message.user {
+    justify-content: flex-end;
+}
+
+.message.bot {
+    justify-content: flex-start;
+}
+
+.message .text {
+    max-width: 70%;
+    padding: 10px 15px;
+    border-radius: 15px;
+    word-wrap: break-word;
+}
+
+.message.user .text {
+    background: #c6b069;
+    color: #fff;
+    border-top-right-radius: 0;
+}
+
+.message.bot .text {
+    background: #e9ecef;
+    color: #000;
+    border-top-left-radius: 0;
+}
+
+/* Chat Footer */
+.chat-footer {
+    padding: 20px;
+    background: #f9f9f9;
+    border-top: 1px solid #ddd;
+}
+
+.chat-footer form {
+    display: flex;
+    align-items: center;
+}
+
+/* Chat Footer Input */
+.chat-footer input {
+    flex: 1;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+/* Chat Footer Button */
+.chat-footer button {
+    background-color: #c6b069;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Hover Effect for Button */
+.chat-footer button:hover {
+    background-color: #b59a5d;
+}
+
+/* Generated Image Section */
+#generatedImageSection {
+    display: none;
+    margin-top: 20px;
+}
+
+#generatedImage {
+    width: 500px;
+    height: 300px;
+    object-fit: cover;
+    border: 2px solid #ccc;
+    border-radius: 10px;
+}
+
+/* Additional Styling for the Banner */
+#home {
+    padding: 50px 0;
+}
+
+#home h1 {
+    font-size: 2.5rem;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+#home p {
+    font-size: 1.1rem;
+    color: #666;
+}
+
+#home .primary-btn {
+    background-color: #c6b069;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 5px;
+    color: white;
+    cursor: pointer;
+}
+
+#home .primary-btn:hover {
+    background-color: #b59a5d;
+}
+
+
+	#logo img {
+    width: 150px; /* Adjust as needed */
+    height: auto;
+}
+
+	</style>
+</head>
+
+		<body>	
+			  <header id="header" id="home">
+		  		<div class="header-top">
+		  			<div class="container">
+				  		<div class="row">
+				  			<!--				  			<div class="col-lg-6 col-sm-6 col-4 header-top-left no-padding">
+				  				<a href="tel:+953 012 3654 896">+953 012 3654 896</a>
+				  				<a href="mailto:support@colorlib.com">support@colorlib.com</a>					  
+				  			</div>
+				  			<div class="col-lg-6 col-sm-6 col-8 header-top-right no-padding">
+				  				<ul>
+									<li><a href="#"><i class="fa fa-facebook"></i></a></li>
+									<li><a href="#"><i class="fa fa-twitter"></i></a></li>
+									<li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+									<li><a href="#"><i class="fa fa-behance"></i></a></li>
+				  				</ul>			
+				  			</div>-->
+				  		</div>			  					
+		  			</div>
+				</div>
+			    <div class="container main-menu">
+			    	<div class="row align-items-center justify-content-between d-flex">
+				      <div id="logo">
+				        <a href="{% url 'front_page' %}"><img src="{% static 'img/logo5.png' %}" alt="" title="" /></a>
+				      </div>
+				      <nav id="nav-menu-container">
+						<ul class="nav-menu">
+							<li class="menu-active"><a href="{% url 'front_page' %}">Home</a></li>
+							<li><a href="{% url 'promte_page' %}">Create Desgin From Promte</a></li>
+							<li><a href="{% url 'image_style_page' %}">Image Style Transfer</a></li>
+							<li><a href="{% url 'chatbot_page' %}">ChatBot</a></li>
+							<li><a href="http://localhost:8000/">Experience 3D</a></li>
+							<li><a href="{% url 'interior_nav' %}">Interior Walkthrough</a></li>
+							<li><a href="{% url 'user_designs' %}">History</a></li>
+
+							<li><a href="{% url 'logout' %}">Logout</a></li>
+						  </ul>
+				      </nav>		    		
+			    	</div>
+			    </div>
+			  </header>
+			  <section class="banner-area relative" id="home"  style="padding-top: 1in;">
+				<div class="overlay overlay-bg"></div>
+				<div class="container">
+					<div class="row fullscreen d-flex justify-content-center align-items-center">
+						<div class="banner-content col-lg-9 col-md-12 justify-content-center">
+							<h1>Share Your Interior Design Idea <br>and Create a Stunning Room Design</h1>
+							<p class="text-white mx-auto">
+								Enter your idea for designing a room, and we’ll help you bring it to life. Whether it's modern, classic, or minimalistic, your imagination is the limit!
+							</p>
+			
+							<!-- Chatbot Interface -->
+							<section class="chat-container">
+								<div class="chat-header">
+									Chat with Interior AI
+								</div>
+								<div class="chat-body" id="chatBody">
+									<div class="message bot" style="text-align: left;">
+										<div class="text">Give your prompt for generating ideas</div>
+									</div>
+								</div>
+								<div class="chat-footer">
+									<form id="chatForm">
+										{% csrf_token %}
+										<input type="text" name="message" id="userMessage" placeholder="Type your design idea..." required>
+										<input type="hidden" id="existingImagePath" name="image_path">
+										<button type="submit">Send</button>
+									</form>
+								</div>
+							</section>
+			
+						</div>
+					</div>
+				</div>
+			</section>
+			
+			<script>
+				document.getElementById('chatForm').addEventListener('submit', function(e) {
+					e.preventDefault();
+					
+					const userMessage = document.getElementById('userMessage').value;
+					const existingImagePath = document.getElementById('existingImagePath').value; // Get existing image path
+			
+					// Display user's message in chat body
+					const userMessageDiv = document.createElement('div');
+					userMessageDiv.classList.add('message', 'user');
+					userMessageDiv.style.textAlign = 'right';
+					userMessageDiv.innerHTML = `<div class="text">${userMessage}</div>`;
+					document.getElementById('chatBody').appendChild(userMessageDiv);
+			
+					// Prepare data to send
+					const requestData = { prompt: userMessage };
+					if (existingImagePath) {
+						requestData.image_path = existingImagePath; // Include existing image for editing
+					}
+			
+					// Send message to server (AJAX request)
+					fetch('/generate_design/', {
+						method: 'POST',
+						headers: {
+							'Content-Type': 'application/json',
+							'X-CSRFToken': document.querySelector('[name=csrfmiddlewaretoken]').value
+						},
+						body: JSON.stringify(requestData)
+					})
+					.then(response => response.json())
+					.then(data => {
+						const botMessageDiv = document.createElement('div');
+						botMessageDiv.classList.add('message', 'bot');
+						botMessageDiv.style.textAlign = 'left';
+			
+						if (data.image_path) {
+							botMessageDiv.innerHTML = `
+								<div class="text">Here is the design:</div>
+								<img src="${data.image_path}" alt="Generated Design" style="width: 300px; height: auto; object-fit: cover; border: 2px solid #ccc; border-radius: 10px;">
+								<br>
+								<button onclick="editExistingDesign('${data.image_path}')">Edit This Design</button>
+							`;
+							document.getElementById('chatBody').appendChild(botMessageDiv);
+							
+							// Store the generated image path for future edits
+							document.getElementById('existingImagePath').value = data.image_path;
+						} else {
+							botMessageDiv.innerHTML = `<div class="text" style="color: red;">Sorry, the design could not be generated. Please try again later.</div>`;
+							document.getElementById('chatBody').appendChild(botMessageDiv);
+						}
+			
+						// Scroll chat to the bottom
+						document.getElementById('chatBody').scrollTop = document.getElementById('chatBody').scrollHeight;
+					})
+					.catch(error => {
+						console.error('Error:', error);
+						const errorMessageDiv = document.createElement('div');
+						errorMessageDiv.classList.add('message', 'bot');
+						errorMessageDiv.style.textAlign = 'left';
+						errorMessageDiv.innerHTML = `<div class="text" style="color: red;">Sorry, something went wrong. Please try again later.</div>`;
+						document.getElementById('chatBody').appendChild(errorMessageDiv);
+					});
+			
+					// Reset the input field
+					document.getElementById('userMessage').value = '';
+				});
+			
+				function editExistingDesign(imagePath) {
+					document.getElementById('existingImagePath').value = imagePath;
+					alert('Now you can enter a new prompt to modify the existing design.');
+				}
+			</script>
+			
+			
+			
+			
+				<!-- start footer Area -->		
+<footer class="footer-area section-gap">
+	<div class="container">
+		<div class="row">
+			<div class="col-lg-5 col-md-6 col-sm-6">
+				<div class="single-footer-widget">
+					<h6>About Us</h6>
+					<p>
+						At DecoDream, we specialize in converting your 2D floor plans into immersive, accurate 3D visualizations. Our unique approach combines cutting-edge technology with user-friendly chatbot customization, making the process of transforming your ideas into tangible designs seamless and interactive.
+					</p>
+					
+				</div>
+			</div>
+							
+			<div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+				<div class="single-footer-widget">
+					<h6>Contact</h6>
+					<p>Email: decodream4202gmail.com</p>
+					<!--<div class="footer-social d-flex align-items-center">
+						<a href="#"><i class="fa fa-facebook"></i></a>
+						<a href="#"><i class="fa fa-twitter"></i></a>
+						<a href="#"><i class="fa fa-dribbble"></i></a>
+						<a href="#"><i class="fa fa-behance"></i></a>
+					</div>-->
+				</div>
+			</div>							
+		</div>
+	</div>
+</footer>	
+<!-- End footer Area -->	
+
+			<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>			
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+			<script src="{% static 'js/easing.min.js' %}"></script>			
+			<script src="{% static 'js/hoverIntent.js' %}"></script>
+			<script src="{% static 'js/superfish.min.js' %}"></script>	
+			<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+			<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>	
+			<script src="{% static 'js/owl.carousel.min.js' %}"></script>						
+			<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>							
+			<script src="{% static 'js/mail-script.js' %}"></script>	
+			<script src="{% static 'js/main.js' %}"></script>
+		</body>
+	</html>
