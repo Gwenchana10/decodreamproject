@@ -1,0 +1,229 @@
+{
+  "floorplan": {
+    "corners": {
+      "corner-0": {
+        "x": 164,
+        "y": 92
+      },
+      "corner-1": {
+        "x": 29,
+        "y": 282
+      },
+      "corner-2": {
+        "x": 28,
+        "y": 82
+      },
+      "corner-3": {
+        "x": 224,
+        "y": 91
+      },
+      "corner-4": {
+        "x": 328,
+        "y": 282
+      },
+      "corner-5": {
+        "x": 328,
+        "y": 166
+      },
+      "corner-6": {
+        "x": 41,
+        "y": 91
+      },
+      "corner-7": {
+        "x": 317,
+        "y": 282
+      },
+      "corner-8": {
+        "x": 178,
+        "y": 282
+      },
+      "corner-9": {
+        "x": 39,
+        "y": 270
+      },
+      "corner-10": {
+        "x": 168,
+        "y": 146
+      },
+      "corner-11": {
+        "x": 39,
+        "y": 166
+      },
+      "corner-12": {
+        "x": 317,
+        "y": 92
+      },
+      "corner-13": {
+        "x": 179,
+        "y": 271
+      },
+      "corner-14": {
+        "x": 40,
+        "y": 271
+      },
+      "corner-15": {
+        "x": 30,
+        "y": 80
+      },
+      "corner-16": {
+        "x": 168,
+        "y": 93
+      },
+      "corner-17": {
+        "x": 327,
+        "y": 80
+      },
+      "corner-18": {
+        "x": 28,
+        "y": 281
+      },
+      "corner-19": {
+        "x": 164,
+        "y": 147
+      }
+    },
+    "walls": [
+      {
+        "corner1": "corner-15",
+        "corner2": "corner-17",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        }
+      },
+      {
+        "corner1": "corner-1",
+        "corner2": "corner-8",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        }
+      },
+      {
+        "corner1": "corner-14",
+        "corner2": "corner-13",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        }
+      },
+      {
+        "corner1": "corner-6",
+        "corner2": "corner-3",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        }
+      },
+      {
+        "corner1": "corner-7",
+        "corner2": "corner-12",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        }
+      },
+      {
+        "corner1": "corner-18",
+        "corner2": "corner-2",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        }
+      },
+      {
+        "corner1": "corner-4",
+        "corner2": "corner-5",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        }
+      },
+      {
+        "corner1": "corner-10",
+        "corner2": "corner-16",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        }
+      },
+      {
+        "corner1": "corner-19",
+        "corner2": "corner-0",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        }
+      },
+      {
+        "corner1": "corner-9",
+        "corner2": "corner-11",
+        "frontTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        },
+        "backTexture": {
+          "url": "rooms/textures/wallmap.png",
+          "stretch": true,
+          "scale": 1
+        }
+      }
+    ]
+  },
+  "items": []
+}

@@ -1,0 +1,841 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Interior 3D Plan</title>
+
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/example.css" rel="stylesheet">
+
+    <script src="js/three.min.js"></script>
+    <script src="js/blueprint3d.js"></script>
+
+    <script src="js/jquery.js"></script>
+    <script src="js/bootstrap.js"></script>
+    
+    <script src="js/items.js"></script>
+    <script src="js/example.js"></script>
+    <style>
+      #move {
+    background-color: #f39c12; /* Orange */
+    color: white;
+  }
+
+  #move:hover {
+    background-color: #e67e22; /* Darker orange on hover */
+  }
+
+  #draw {
+    background-color: #2ecc71; /* Green */
+    color: white;
+  }
+
+  #draw:hover {
+    background-color: #27ae60; /* Darker green on hover */
+  }
+
+  #delete {
+    background-color: #e74c3c; /* Red */
+    color: white;
+  }
+
+  #delete:hover {
+    background-color: #c0392b; /* Darker red on hover */
+  }
+
+  #update-floorplan {
+    background-color: #3498db; /* Blue */
+    color: white;
+  }
+
+  #update-floorplan:hover {
+    background-color: #2980b9; /* Darker blue on hover */
+  }
+    /* Sidebar Styles */
+    .sidebar {
+    background-color: #2c3e50; /* Dark Blue-gray */
+    color: white;
+    padding: 15px;
+  }
+
+  .nav-sidebar {
+    padding-left: 0;
+  }
+
+  .nav-sidebar li {
+    margin-bottom: 10px;
+  }
+
+  .nav-sidebar li a {
+    color: white;
+    font-weight: bold;
+    text-decoration: none;
+  }
+
+  .nav-sidebar li a:hover {
+    background-color: #34495e; /* Hover effect (lighter blue-gray) */
+    border-radius: 5px;
+  }
+
+  .glyphicon-chevron-right {
+    color: #ecf0f1; /* Light gray */
+  }
+
+  /* Context Menu Styles */
+  #context-menu {
+    background-color: #34495e; /* Lighter Blue-gray */
+    border-radius: 5px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  }
+
+  #context-menu-name {
+    font-size: 18px;
+    color: #ecf0f1; /* Light gray */
+    font-weight: bold;
+  }
+
+  /* Button Styles */
+  .btn-danger {
+    background-color: #e74c3c; /* Red */
+    border-color: #c0392b; /* Darker red */
+  }
+
+  .btn-danger:hover {
+    background-color: #c0392b; /* Darker red */
+    border-color: #e74c3c;
+  }
+
+  /* Input Fields */
+  .form-control {
+    background-color: #ecf0f1; /* Light gray for inputs */
+    color: #2c3e50; /* Dark text */
+    border: 1px solid #bdc3c7;
+  }
+
+  .form-control:focus {
+    border-color: #3498db; /* Blue focus border */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  }
+
+  /* Panel Styles */
+  .panel-default {
+    border: 1px solid #bdc3c7;
+    background-color: #34495e;
+  }
+
+  .panel-heading {
+    background-color: #2c3e50;
+    color: white;
+    font-weight: bold;
+  }
+
+  .panel-body {
+    background-color: #34495e;
+    color: white;
+  }
+
+  /* Checkbox */
+  #fixed {
+    margin-left: 5px;
+    margin-top: 5px;
+  }
+
+  small {
+    color: #bdc3c7; /* Light gray text for the small note */
+  }
+  
+  
+  
+  /* Context Menu Styles */
+  #context-menu {
+    background-color: #34495e; /* Lighter Blue-gray for context menu */
+    border-radius: 5px;
+    padding: 20px;
+    color: white;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+
+  #context-menu-name {
+    font-size: 18px;
+    color: #ecf0f1; /* Light gray */
+    font-weight: bold;
+  }
+
+  /* Button Styles */
+  .btn-danger {
+    background-color: #e74c3c; /* Red */
+    border-color: #c0392b; /* Darker red */
+    color: white;
+    font-weight: bold;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .btn-danger:hover {
+    background-color: #c0392b; /* Darker red on hover */
+    border-color: #e74c3c;
+  }
+
+  /* Panel Styles */
+  .panel-default {
+    background-color: #34495e; /* Match with context menu background */
+    border: 1px solid #bdc3c7; /* Lighter border color */
+    border-radius: 5px;
+  }
+
+  .panel-heading {
+    background-color: #2c3e50; /* Darker shade for the header */
+    color: white;
+    font-weight: bold;
+    border-radius: 5px 5px 0 0;
+  }
+
+  .panel-body {
+    background-color: #34495e;
+    color: white;
+    padding: 20px;
+    border-radius: 0 0 5px 5px;
+  }
+
+  /* Form Input Fields */
+  .form-control {
+    background-color: #ecf0f1; /* Light gray */
+    color: #2c3e50; /* Dark text */
+    border: 1px solid #bdc3c7;
+    border-radius: 5px;
+  }
+
+  .form-control:focus {
+    border-color: #3498db; /* Blue focus border */
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  }
+
+  /* Checkbox Styling */
+  #fixed {
+    margin-left: 5px;
+  }
+
+  small {
+    color: #bdc3c7; /* Light gray text for the small note */
+  }
+
+  /* Spacing */
+  br {
+    margin-top: 10px;
+  }
+  #add-items {
+    background-color: #34495e; /* Match the context menu and sidebar */
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin-top: 20px;
+  }
+
+  /* Item Wrapper */
+  #items-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+  }
+  .col-xs-9{
+    background-color: #2c3e50; 
+  }
+
+  .item-box {
+    background-color: #2c3e50; /* Darker background for each item */
+    color: white;
+    padding: 15px;
+    border-radius: 5px;
+    width: calc(33% - 15px); /* Make items 1/3rd of the container's width */
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    transition: transform 0.3s ease;
+  }
+
+  .item-box:hover {
+    transform: translateY(-5px); /* Slight hover effect */
+  }
+
+  .item-name {
+    font-weight: bold;
+    font-size: 16px;
+  }
+
+  .item-actions {
+    display: flex;
+    gap: 5px;
+  }
+
+  .btn-item {
+    background-color: #3498db; /* Blue for buttons */
+    border-color: #2980b9; /* Darker blue */
+    color: white;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, border-color 0.3s;
+  }
+
+  .btn-item:hover {
+    background-color: #2980b9;
+    border-color: #3498db;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .item-box {
+      width: calc(50% - 15px); /* Items take up 50% on smaller screens */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .item-box {
+      width: 100%; /* Items take full width on very small screens */
+    }
+  }
+    /* Add Item Container */
+    .add-item {
+    display: block;
+    background-color: #2c3e50; /* Dark background */
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-decoration: none; /* Remove underline on hover */
+    color: white; /* Text color */
+  }
+
+  /* Thumbnail Image */
+  .add-item img {
+    width: 100%;
+    height: auto;
+    border-bottom: 2px solid #34495e; /* Slight border below image */
+    transition: opacity 0.3s ease;
+  }
+
+  /* Item Name Text */
+  .add-item:hover .item-name {
+    color: #3498db; /* Change text color on hover */
+  }
+
+  /* Hover Effect */
+  .add-item:hover {
+    transform: translateY(-5px); /* Slight hover effect */
+    box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2); /* Add shadow on hover */
+  }
+
+  /* Item Name in Thumbnail */
+  .add-item .item-name {
+    display: block;
+    text-align: center;
+    padding: 10px;
+    background-color: #34495e; /* Match dark theme */
+    font-weight: bold;
+    font-size: 14px;
+    border-top: 2px solid #34495e;
+    color: white;
+  }
+
+  /* Adjust Layout */
+  .col-sm-4 {
+    padding: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  /* Responsive Adjustments */
+  @media (max-width: 768px) {
+    .col-sm-4 {
+      width: calc(50% - 20px); /* Items take up 50% of the width on smaller screens */
+    }
+  }
+
+  @media (max-width: 480px) {
+    .col-sm-4 {
+      width: 100%; /* Items take full width on very small screens */
+    }
+  }
+  /* Style the #main-controls container */
+  #main-controls {
+    display: flex;
+    justify-content: flex-start;  /* Align buttons to the left */
+    gap: 15px;  /* Space between buttons */
+    margin-bottom: 20px;  /* Space below the controls */
+  }
+
+  /* Style for individual buttons */
+  #main-controls .btn {
+    padding: 8px 16px;  /* Add padding to the buttons */
+    border-radius: 5px;  /* Rounded corners */
+    font-size: 14px;  /* Set font size */
+    font-weight: bold;  /* Make text bold */
+  }
+
+  /* Specific button colors */
+  #new {
+    background-color: #3498db;  /* Blue background */
+    border-color: #2980b9;  /* Darker blue border */
+    color: white;  /* White text */
+  }
+
+  #saveFile {
+    background-color: #2ecc71;  /* Green background */
+    border-color: #27ae60;  /* Darker green border */
+    color: white;  /* White text */
+  }
+
+  /* Hover effects for buttons */
+  #main-controls .btn:hover {
+    opacity: 0.9;  /* Slight transparency on hover */
+    cursor: pointer;  /* Change cursor to pointer */
+  }
+
+  /* Optional: Active state for buttons */
+  #main-controls .btn:active {
+    transform: scale(0.98);  /* Slightly shrink the button when clicked */
+  }
+    /* Style for the camera-controls container */
+    #camera-controls {
+    position: absolute; /* Position the controls absolutely */
+    bottom: 10px; /* Distance from the bottom */
+    left: 50%; /* Center horizontally */
+    transform: translateX(-50%); /* Center the controls perfectly */
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    gap: 15px;  /* Add some space between buttons */
+    align-items: center;
+  }
+
+  /* Style for individual buttons */
+  .camera-btn {
+    padding: 10px;
+    background-color: #333;
+    color: #fff;
+    border: 1px solid #444;
+    border-radius: 50%;  /* Make buttons round */
+    transition: background-color 0.3s ease, transform 0.1s ease;  /* Smooth transition */
+  }
+
+  /* Style for zoom buttons */
+  #zoom-in, #zoom-out {
+    background-color: #3498db;  /* Blue background */
+  }
+
+  #zoom-in:hover, #zoom-out:hover {
+    background-color: #2980b9;  /* Darker blue on hover */
+    transform: scale(1.1);  /* Slight zoom effect */
+  }
+
+  /* Style for reset view button */
+  #reset-view {
+    background-color: #e74c3c;  /* Red background */
+  }
+
+  #reset-view:hover {
+    background-color: #c0392b;  /* Darker red on hover */
+    transform: scale(1.1);
+  }
+
+  /* Style for movement buttons */
+  #move-left, #move-right, #move-up, #move-down {
+    background-color: #f39c12;  /* Orange background */
+  }
+
+  #move-left:hover, #move-right:hover, #move-up:hover, #move-down:hover {
+    background-color: #e67e22;  /* Darker orange on hover */
+    transform: scale(1.1);
+  }
+
+  /* Vertical alignment for up and down movement buttons */
+  .btn-group-vertical {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  /* Adjust icon sizes */
+  .glyphicon {
+    font-size: 16px;
+  }
+
+  /* Hover effect for all buttons */
+  .camera-btn:hover {
+    cursor: pointer;  /* Change cursor to pointer */
+  }
+
+  /* Optional: Active state for the buttons (when clicked) */
+  .camera-btn:active {
+    transform: scale(0.98);  /* Shrink button slightly on click */
+  }
+
+    </style>
+        <!-- Fonts and Icons -->
+        <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet">
+        <link rel="stylesheet" href="css/font-awesome.min.css">
+        <link rel="stylesheet" href="css/main.css">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="css/bootstrap.min.css">
+        
+        <!-- Custom Styles -->
+        <link rel="stylesheet" href="css/main.css">
+        <script src="js1/vendor/jquery-2.2.4.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+        <script src="js1/vendor/bootstrap.min.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY"></script>
+        <script src="js1/easing.min.js"></script>
+        <script src="js1/hoverIntent.js"></script>
+        <script src="js1/superfish.min.js"></script>
+        <script src="js1/jquery.ajaxchimp.min.js"></script>
+        <script src="js1/jquery.magnific-popup.min.js"></script>
+        <script src="js1/owl.carousel.min.js"></script>
+        <script src="js1/jquery.nice-select.min.js"></script>
+        <script src="js1/mail-script.js"></script>
+        <script src="js1/main.js"></script>
+        <style>
+          /* General Styles */
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #1b2f42; /* Dark Blue-gray */
+}
+
+/* Header */
+header {
+    background-color: rgba(0, 0, 0, 0); /* Transparent header background */
+    /*background-image: url('a.jpg');*/ 
+    margin-bottom: 5%;
+    position: relative;
+    width: 100%;
+    padding: 10px 0;  /* Adjust padding for reduced height */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Optional shadow for depth */
+    z-index: 1000;
+    display: flex;
+    justify-content: space-between; /* Align logo and nav on the same line */
+    align-items: center;
+}
+
+/* Logo and Navigation Container */
+.main-menu {
+    width: 90%;  /* Reduced width of the navigation */
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;  /* Align logo and nav on the same line */
+    align-items: center;
+}
+
+/* Logo */
+#logo {
+    display: flex;
+    align-items: center;
+}
+
+#logo img {
+    height: 50px;  /* Reduced logo size */
+    transition: all 0.3s ease;
+}
+
+#logo a {
+    display: inline-block;
+}
+
+/* Navigation Menu Container with Background Image */
+#nav-menu-container {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: rgba(9, 62, 109, 0.5); /* Semi-transparent background */
+    /*background-image: url('a.jpg'); /* Replace with your background image */
+    background-size: cover;  /* Cover the entire container */
+    background-position: center; /* Center the background */
+    background-attachment: fixed; /* Optional: Keeps the background fixed while scrolling */
+    padding: 10px; /* Adds some space around the nav */
+    border-radius: 10px; /* Optional: Add rounded corners to the navigation */
+}
+
+
+.nav-menu li {
+    padding: 5px 10px;
+}
+
+
+
+.nav-menu li a:hover {
+    color: #fff;
+    background-color: rgba(255, 255, 255, 0.4); /* Light hover effect */
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .main-menu {
+        width: 100%;
+        flex-direction: column;  /* Stack logo and menu on smaller screens */
+    }
+
+    .nav-menu {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .nav-menu li a {
+        font-size: 14px;
+    }
+}
+
+/* Optional: Menu Active State */
+.menu-active a {
+    color: #ff9800; /* Active state color */
+    background-color: rgba(255, 255, 255, 0.2);
+    border-radius: 5px;
+}
+
+
+        </style>
+  </head>
+
+  <body>
+    <header id="header" style="margin-bottom:5%;">
+      <div class="container main-menu">
+          <div class="row align-items-center justify-content-between d-flex">
+              <div id="logo">
+                  <a href="{% url 'front_page' %}">
+                      <img src="logo5.png" alt="Logo" title="Home" />
+                  </a>
+              </div>
+  
+              <!-- Navigation Menu -->
+              <nav id="nav-menu-container">
+                  <ul class="nav-menu">
+                      <li><a href="http://127.0.0.1:8000/front_page/">Home</a></li>
+                      <li><a href="http://127.0.0.1:8000/promte_page/">Create Design From Prompt</a></li>
+                      <li><a href="http://127.0.0.1:8000/image_style_page/">Image Style Transfer</a></li>
+                      <li><a href="http://127.0.0.1:8000/chatbot_page/">ChatBot</a></li>
+                      <li class="menu-active"><a href="#">Experience 3D</a></li>
+                      <li><a href="http://127.0.0.1:8000/interior_nav/">Interior Walkthrough</a></li>
+                      <li><a href="http://127.0.0.1:8000/user_designs/">History</a></li>
+                      <li><a href=" http://127.0.0.1:8000/">Logout</a></li>
+                  </ul>
+              </nav>
+          </div>
+      </div>
+  </header>
+  <section class="banner-area relative" id="home">
+    <div class="overlay overlay-bg"></div>
+    <div class="container-fluid" style="margin-top: 8%;">
+      <div class="row main-row">
+        <!-- Left Column -->
+        <div class="col-xs-3 sidebar">
+          <!-- Main Navigation -->
+          <ul class="nav nav-sidebar">
+            <li id="floorplan_tab"><a href="#">
+              Edit Floorplan
+              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            </a></li>
+            <li id="design_tab"><a href="#">
+              Design
+              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            </a></li>
+            <li id="items_tab"><a href="#">
+              Add Items
+              <span class="glyphicon glyphicon-chevron-right pull-right"></span>
+            </a></li>
+          </ul>
+          <hr />
+
+          <!-- Context Menu -->
+          <div id="context-menu">
+            <div style="margin: 0 20px">
+              <span id="context-menu-name" class="lead"></span>
+              <br /><br />
+              <button class="btn btn-block btn-danger" id="context-menu-delete">
+                <span class="glyphicon glyphicon-trash"></span> 
+                Delete Item
+              </button>
+            <br />
+            <div class="panel panel-default">
+              <div class="panel-heading">Adjust Size</div>
+              <div class="panel-body" style="color: #333333">
+
+                <div class="form form-horizontal" class="lead">
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label">
+                       Width
+                    </label>
+                    <div class="col-sm-6">
+                      <input type="number" class="form-control" id="item-width">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label">
+                      Depth 
+                    </label>
+                    <div class="col-sm-6">
+                      <input type="number" class="form-control" id="item-depth">
+                    </div>
+                  </div>
+                  <div class="form-group">
+                    <label class="col-sm-5 control-label">
+                      Height
+                    </label>
+                    <div class="col-sm-6">
+                      <input type="number" class="form-control" id="item-height">
+                    </div>
+                  </div>
+                </div>
+                <small><span class="text-muted">Measurements in inches.</span></small>
+              </div>
+            </div>
+
+            <label><input type="checkbox" id="fixed" /> Lock in place</label>
+            <br /><br />
+            </div>
+          </div>
+
+          <!-- Floor textures -->
+          <div id="floorTexturesDiv" style="display:none; padding: 0 20px">
+            <div class="panel panel-default">
+              <div class="panel-heading">Adjust Floor</div>
+              <div class="panel-body" style="color: #333333">
+
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_fine_wood.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="Thumbnail light fine wood" src="rooms/thumbnails/thumbnail_light_fine_wood.jpg" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Wall Textures -->
+          <div id="wallTextures" style="display:none; padding: 0 20px">
+            <div class="panel panel-default">
+              <div class="panel-heading">Adjust Wall</div>
+              <div class="panel-body" style="color: #333333">
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/marbletiles.jpg" texture-stretch="false" texture-scale="300">
+                    <img alt="Thumbnail marbletiles" src="rooms/thumbnails/thumbnail_marbletiles.jpg" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/wallmap_yellow.png" texture-stretch="true" texture-scale="">
+                    <img alt="Thumbnail wallmap yellow" src="rooms/thumbnails/thumbnail_wallmap_yellow.png" />
+                  </a>
+                </div>
+                <div class="col-sm-6" style="padding: 3px">
+                  <a href="#" class="thumbnail texture-select-thumbnail" texture-url="rooms/textures/light_brick.jpg" texture-stretch="false" texture-scale="100">
+                    <img alt="Thumbnail light brick" src="rooms/thumbnails/thumbnail_light_brick.jpg" />
+                  </a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right Column -->
+        <div class="col-xs-9 main">
+
+          <!-- 3D Viewer -->
+          <div id="viewer">
+
+            <div id="main-controls">
+              <a href="#" class="btn btn-default btn-sm" id="new">
+                New Plan
+              </a>
+              <a href="#" class="btn btn-default btn-sm" id="saveFile">
+                Save Plan
+              </a>
+              <a class="btn btn-sm btn-default btn-file">
+               <input type="file" class="hidden-input" id="loadFile">
+               Load Plan
+              </a>
+              <!-- <a class="btn btn-sm btn-default btn-file">
+                <input type="file" class="hidden-input" id="loadFloor">
+                Upload Floor Plan
+               </a> -->
+            </div>
+
+            <div id="camera-controls">
+              <a href="#" class="btn btn-default bottom" id="zoom-out">
+                <span class="glyphicon glyphicon-zoom-out"></span>
+              </a>
+              <a href="#" class="btn btn-default bottom" id="reset-view">
+                <span class="glyphicon glyphicon glyphicon-home"></span>
+              </a>
+              <a href="#" class="btn btn-default bottom" id="zoom-in">
+                <span class="glyphicon glyphicon-zoom-in"></span>
+              </a>
+              
+              <span>&nbsp;</span>
+
+              <a class="btn btn-default bottom" href="#" id="move-left" >
+                <span class="glyphicon glyphicon-arrow-left"></span>
+              </a>
+              <span class="btn-group-vertical">
+                <a class="btn btn-default" href="#" id="move-up">
+                  <span class="glyphicon glyphicon-arrow-up"></span>
+                </a>
+                <a class="btn btn-default" href="#" id="move-down">
+                  <span class="glyphicon glyphicon-arrow-down"></span>
+                </a>
+              </span>
+              <a class="btn btn-default bottom" href="#" id="move-right" >
+                <span class="glyphicon glyphicon-arrow-right"></span>
+              </a>
+            </div>
+
+            <div id="loading-modal">
+              <h1>Loading...</h1>  
+            </div>
+          </div>
+
+          <!-- 2D Floorplanner -->
+          <div id="floorplanner">
+            <canvas id="floorplanner-canvas"></canvas>
+            <div id="floorplanner-controls">
+
+              <button id="move" class="btn btn-sm btn-default">
+                <span class="glyphicon glyphicon-move"></span>
+                Move Walls
+              </button>
+              <button id="draw" class="btn btn-sm btn-default">
+                <span class="glyphicon glyphicon-pencil"></span>
+                Draw Walls
+              </button>
+              <button id="delete" class="btn btn-sm btn-default">
+                <span class="glyphicon glyphicon-remove"></span>
+                Delete Walls
+              </button>
+              <span class="pull-right">
+                <button class="btn btn-primary btn-sm" id="update-floorplan">Done &raquo;</button>
+              </span>
+
+            </div>
+            <div id="draw-walls-hint">
+              Press the "Esc" key to stop drawing walls
+            </div>
+          </div>
+
+          <!-- Add Items -->
+          <div id="add-items">
+            <div class="row" id="items-wrapper">
+
+              <!-- Items added here by items.js -->
+            </div>
+          </div>
+      
+        </div>
+        <!-- End Right Column -->
+      </div>
+    </div>
+    
+</section>
+  </body>
+  
+</html>
