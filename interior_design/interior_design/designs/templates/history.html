@@ -1,0 +1,344 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx" class="no-js">
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="shortcut icon" href="{% static 'img/fav.png' %}">
+  
+    <meta name="author" content="colorlib">
+
+    <meta name="description" content="">
+
+    <meta name="keywords" content="">
+
+    <meta charset="UTF-8">
+
+    <title>Interior</title>
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:100,200,400,300,500,600,700" rel="stylesheet"> 
+
+    <link rel="stylesheet" href="{% static 'css/linearicons.css' %}">
+    <link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/main.css' %}">
+	<style>
+
+/* General table styling */
+
+#logo img {
+    width: 150px; /* Adjust as needed */
+    height: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: separate;
+    border-spacing: 0;
+    margin-bottom: 40px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+    border-radius: 12px;
+    overflow: hidden;
+    background-color: #ffffff;
+}
+
+/* Table headings */
+table thead {
+    background-color: #343a40;
+    color: #ffffff;
+    text-align: center;
+}
+
+table thead th {
+    padding: 16px 20px;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+/* Table body */
+table tbody td {
+    padding: 14px 20px;
+    font-size: 15px;
+    text-align: center;
+    vertical-align: middle;
+    color: #333333;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+/* Image styling */
+table img {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    transition: transform 0.3s ease-in-out;
+}
+
+table img:hover {
+    transform: scale(1.05);
+}
+
+/* Alternate row coloring */
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+
+/* Heading styles for sections */
+h2 {
+    font-size: 26px;
+    font-weight: bold;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+    position: relative;
+}
+
+h2::after {
+    content: '';
+    display: block;
+    width: 60px;
+    height: 4px;
+    background: #ff6f61;
+    margin: 10px auto 0;
+    border-radius: 2px;
+}
+
+/* Responsive tweaks */
+@media (max-width: 768px) {
+    table img {
+        width: 80px;
+    }
+
+    table thead th,
+    table tbody td {
+        padding: 10px;
+        font-size: 14px;
+    }
+
+    h2 {
+        font-size: 22px;
+    }
+}
+
+	</style>
+</head>
+<body>	
+    <header id="header" id="home">
+        <div class="header-top">
+            <div class="container">
+                <div class="row">
+                    <!--				  			<div class="col-lg-6 col-sm-6 col-4 header-top-left no-padding">
+                        <a href="tel:+953 012 3654 896">+953 012 3654 896</a>
+                        <a href="mailto:support@colorlib.com">support@colorlib.com</a>					  
+                    </div>
+                    <div class="col-lg-6 col-sm-6 col-8 header-top-right no-padding">
+                        <ul>
+                          <li><a href="#"><i class="fa fa-facebook"></i></a></li>
+                          <li><a href="#"><i class="fa fa-twitter"></i></a></li>
+                          <li><a href="#"><i class="fa fa-dribbble"></i></a></li>
+                          <li><a href="#"><i class="fa fa-behance"></i></a></li>
+                        </ul>			
+                    </div>-->
+                </div>			  					
+            </div>
+      </div>
+      <div class="container main-menu">
+          <div class="row align-items-center justify-content-between d-flex">
+            <div id="logo">
+              <a href="{% url 'front_page' %}"><img src="{% static 'img/logo5.png' %}" alt="" title="" /></a>
+            </div>
+            <nav id="nav-menu-container">
+              <ul class="nav-menu">
+                  <li class="menu-active"><a href="{% url 'front_page' %}">Home</a></li>
+                  <li><a href="{% url 'promte_page' %}">Create Desgin From Promte</a></li>
+                  <li><a href="{% url 'image_style_page' %}">Image Style Transfer</a></li>
+                  <li><a href="{% url 'chatbot_page' %}">ChatBot</a></li>
+                  <li><a href="http://localhost:8000/">Experience 3D</a></li>
+                  <!--<li><a href="{% url 'interior_nav' %}">Interior Walkthrough</a></li>-->
+                  <li><a href="{% url 'user_designs' %}">History</a></li>
+
+                  <li><a href="{% url 'logout' %}">Logout</a></li>
+                </ul>
+            </nav><!-- #nav-menu-container -->		    		
+          </div>
+      </div>
+    </header><!-- #header -->
+
+    <section class="banner-area relative" id="home" style="padding: 100px 0;">
+        <div class="overlay overlay-bg"></div>
+        <div class="container">
+            <div class="row d-flex justify-content-center align-items-center">
+                <div class="col-lg-10 col-md-12 text-center">
+                    <h1 class="text-white mb-3">Your Interior Designs</h1>
+                    <p class="text-white mb-5">Explore your created designs below.</p>
+                </div>
+            </div>
+    
+            <!-- Design Generation Table -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive mb-5">
+                        <h2 class="text-white mb-3">Design Generation</h2>
+                        <table class="table table-bordered table-striped bg-white">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Design Name</th>
+                                    <th scope="col">Design Image</th>
+                                    <th scope="col">Prompt</th>
+                                    <th scope="col">Created At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for design in design_generation %}
+                                <tr>
+                                    <td>{{ design.design_name }}</td>
+                                    <td>
+                                        <img src="{{ design.image_path }}" alt="{{ design.design_name }}"
+                                             class="img-thumbnail" style="max-width: 150px; cursor: pointer;"
+                                             data-bs-toggle="modal" data-bs-target="#imageModal"
+                                             data-bs-image="{{ design.image_path }}">
+                                    </td>
+                                    <td>{{ design.promote }}</td>
+                                    <td>{{ design.created_at }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="4" class="text-center">No design generation records found.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    
+            <!-- Style Transfer Table -->
+            <div class="row">
+                <div class="col-12">
+                    <div class="table-responsive">
+                        <h2 class="text-white mb-3">Style Transfer</h2>
+                        <table class="table table-bordered table-striped bg-white">
+                            <thead class="thead-dark">
+                                <tr>
+                                    <th scope="col">Design Name</th>
+                                    <th scope="col">Input Image</th>
+                                    <th scope="col">Output Image</th>
+                                    <th scope="col">Prompt</th>
+                                    <th scope="col">Created At</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {% for design in style_transfer %}
+                                <tr>
+                                    <td>{{ design.design_name }}</td>
+                                    <td>
+                                        <img src="{{ design.input_image_path }}" alt="Input image for {{ design.design_name }}"
+                                             class="img-thumbnail" style="max-width: 100px; cursor: pointer;"
+                                             data-bs-toggle="modal" data-bs-target="#imageModal"
+                                             data-bs-image="{{ design.input_image_path }}">
+                                    </td>
+                                    <td>
+                                        <img src="{{ design.image_path }}" alt="Output image for {{ design.design_name }}"
+                                             class="img-thumbnail" style="max-width: 100px; cursor: pointer;"
+                                             data-bs-toggle="modal" data-bs-target="#imageModal"
+                                             data-bs-image="{{ design.image_path }}">
+                                    </td>
+                                    <td>{{ design.promote }}</td>
+                                    <td>{{ design.created_at }}</td>
+                                </tr>
+                                {% empty %}
+                                <tr>
+                                    <td colspan="5" class="text-center">No style transfer records found.</td>
+                                </tr>
+                                {% endfor %}
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+    
+        <!-- Image Modal -->
+        <div class="modal fade" id="imageModal" tabindex="-1" aria-labelledby="imageModalLabel" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered modal-lg">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="imageModalLabel">Image Preview</h5>
+                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                    </div>
+                    <div class="modal-body text-center">
+                        <img id="modalImage" src="" alt="Preview" class="img-fluid rounded">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Modal Script -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var imageModal = document.getElementById('imageModal');
+            if (imageModal) {
+                imageModal.addEventListener('show.bs.modal', function(event) {
+                    var button = event.relatedTarget; // Button that triggered the modal
+                    var imageSrc = button.getAttribute('data-bs-image');
+                    var modalImage = document.getElementById('modalImage');
+                    modalImage.src = imageSrc;
+                    modalImage.alt = button.alt || 'Preview';
+                });
+            }
+        });
+    </script>
+    
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+   <!-- start footer Area -->		
+<footer class="footer-area section-gap">
+    <div class="container">
+    <div class="row">
+    <div class="col-lg-5 col-md-6 col-sm-6">
+        <div class="single-footer-widget">
+            <h6>About Us</h6>
+            <p>
+                At DecoDream, we specialize in converting your 2D floor plans into immersive, accurate 3D visualizations. Our unique approach combines cutting-edge technology with user-friendly chatbot customization, making the process of transforming your ideas into tangible designs seamless and interactive.
+            </p>
+            
+        </div>
+    </div>
+                    
+    <div class="col-lg-2 col-md-6 col-sm-6 social-widget">
+        <div class="single-footer-widget">
+            <h6>Contact</h6>
+            <p>Email: decodream4202gmail.com</p>
+            <!--<div class="footer-social d-flex align-items-center">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-dribbble"></i></a>
+                <a href="#"><i class="fa fa-behance"></i></a>
+            </div>-->
+        </div>
+    </div>							
+    </div>
+    </div>
+    </footer>	
+    <!-- End footer Area -->	
+    
+			<script src="{% static 'js/vendor/jquery-2.2.4.min.js' %}"></script>
+			<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+			<script src="{% static 'js/vendor/bootstrap.min.js' %}"></script>			
+			<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBhOdIF3Y9382fqJYt5I_sswSrEw5eihAA"></script>
+			<script src="{% static 'js/easing.min.js' %}"></script>			
+			<script src="{% static 'js/hoverIntent.js' %}"></script>
+			<script src="{% static 'js/superfish.min.js' %}"></script>	
+			<script src="{% static 'js/jquery.ajaxchimp.min.js' %}"></script>
+			<script src="{% static 'js/jquery.magnific-popup.min.js' %}"></script>	
+			<script src="{% static 'js/owl.carousel.min.js' %}"></script>						
+			<script src="{% static 'js/jquery.nice-select.min.js' %}"></script>							
+			<script src="{% static 'js/mail-script.js' %}"></script>	
+			<script src="{% static 'js/main.js' %}"></script>
+		</body>
+	</html>

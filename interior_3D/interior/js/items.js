@@ -62,12 +62,7 @@ $(document).ready(function() {
       "model" : "models/js/cb-archnight-white_baked.js",
       "type" : "1"
     }, 
-    {
-      "name" : "Wardrobe - White",
-      "image" : "models/thumbnails/thumbnail_TN-ikea-kvikine.png",
-      "model" : "models/js/ik-kivine_baked.js",
-      "type" : "1"
-    }, 
+   
     {
       "name" : "Full Bed",
       "image" : "models/thumbnails/thumbnail_nordli-bed-frame__0159270_PE315708_S4.JPG",
@@ -86,18 +81,7 @@ $(document).ready(function() {
       "model" : "models/js/cb-clapboard_baked.js",
       "type" : "1"
     }, 
-        {
-      "name" : "Media Console - Black",
-      "image" : "models/thumbnails/thumbnail_moore-60-media-console-1.jpg",
-      "model" : "models/js/cb-moore_baked.js",
-      "type" : "1"
-    }, 
-       {
-      "name" : "Sectional - Olive",
-      "image" : "models/thumbnails/thumbnail_img21o.jpg",
-      "model" : "models/js/we-crosby2piece-greenbaked.js",
-      "type" : "1"
-    }, 
+      
     {
       "name" : "Sofa - Grey",
       "image" : "models/thumbnails/thumbnail_rochelle-sofa-3.jpg",

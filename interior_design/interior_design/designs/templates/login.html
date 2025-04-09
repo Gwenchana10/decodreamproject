@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Modern Sign In & Sign Up</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background: linear-gradient(to right, #1c2e49, #788790);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            width: 900px;
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 8px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .form-container {
+            flex: 1;
+            padding: 40px;
+        }
+
+        .form-container h2 {
+            font-size: 24px;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #1c2e49;
+        }
+
+        .form-container label {
+            display: block;
+            font-size: 14px;
+            margin-bottom: 5px;
+            color: #555;
+        }
+
+        .form-container input {
+            width: 100%;
+            padding: 10px;
+            margin-bottom: 20px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            font-size: 14px;
+        }
+
+        .form-container button {
+            width: 100%;
+            padding: 10px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            background: #1c2e49;
+            color: #fff;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .form-container button:hover {
+            background: #1c2e49;
+        }
+
+        .side-container {
+            flex: 1;
+            background: linear-gradient(to bottom, #3498db, #1c2e49);
+            color: #fff;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px;
+        }
+
+        .side-container h3 {
+            font-size: 22px;
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .side-container p {
+            font-size: 14px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .side-container button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            font-size: 14px;
+            font-weight: 600;
+            background: #fff;
+            color: #3498db;
+            cursor: pointer;
+            transition: background 0.3s ease, color 0.3s ease;
+        }
+
+        .side-container button:hover {
+            background: #3498db;
+            color: #fff;
+        }
+
+        .hidden {
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Sign In Form -->
+        <div class="form-container" id="signInForm">
+            <h2>Welcome Back</h2>
+            <form action="{% url 'login' %}" method="POST">
+                {% csrf_token %}
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <button type="submit">Sign In</button>
+            </form>
+        </div>
+
+        <!-- Side Section -->
+        <div class="side-container" id="signUpPrompt">
+            <h3>New Here?</h3>
+            <p>Create an account   </p>
+            <button onclick="toggleForms()">Sign Up</button>
+        </div>
+
+        <!-- Sign Up Form -->
+        <div class="form-container hidden" id="signUpForm">
+            <h2>Create Account</h2>
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" placeholder="Enter your name" required>
+
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" placeholder="Enter your email" required>
+
+                <label for="mobile">Mobile Number</label>
+                <input type="tel" id="mobile" name="mobile" placeholder="Enter your mobile number" required>
+
+                <label for="password">Password</label>
+                <input type="password" id="password" name="password" placeholder="Enter your password" required>
+
+                <button type="submit">Sign Up</button>
+            </form>
+        </div>
+
+        <!-- Side Section -->
+        <div class="side-container hidden" id="signInPrompt">
+            <h3>Already Have an Account?</h3>
+            <p>Sign in to continue where you left off!</p>
+            <button onclick="toggleForms()">Sign In</button>
+        </div>
+    </div>
+
+    <script>
+        function toggleForms() {
+            document.getElementById('signInForm').classList.toggle('hidden');
+            document.getElementById('signUpForm').classList.toggle('hidden');
+            document.getElementById('signInPrompt').classList.toggle('hidden');
+            document.getElementById('signUpPrompt').classList.toggle('hidden');
+        }
+    </script>
+</body>
+</html>
